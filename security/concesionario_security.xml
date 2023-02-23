@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+    <odoo>
+        <data>
+            <!-- Definimos una categoría de seguridad para módulo-->
+            <record model="ir.module.category" id="concesionario.module_category_concesionario">
+                <field name="name">Concesionario</field>
+                <field name="description">Ayuda a gestionar personas</field>
+                <field name="sequence">100</field>
+            </record>
+
+            <record model="res.groups" id="group_concesionario_usuario">
+                <field name="name">Usuario</field>
+                <field name="category_id" ref="concesionario.module_category_concesionario"></field>
+                <field name="comment"> Usuarios solo pueden leer</field>
+            </record>
+
+            <record model="res.groups" id="group_concesionario_administrador">
+                <field name="name">Administrador</field>
+                <field name="category_id" ref="concesionario.module_category_concesionario"></field>
+                <field name="comment"> Administrador pueden leer y escribir</field>
+                <!-- tambien pertenecen al grupo usuario, mirar documentación ORM-->
+                <field name="implied_ids" eval="[(4, ref('group_concesionario_usuario'))]"/>
+                 <!--Añadimos a los usuarios administradores de odoo -->
+                <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]" />
+            </record>
+        </data>
+    </odoo>

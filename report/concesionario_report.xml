@@ -1,0 +1,135 @@
+<odoo>
+    
+
+    <record id="concesionario.coche_report" model="ir.actions.report">
+        <field name="name"> Informe de coche</field>
+        <field name="model">concesionario.coche</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">concesionario.coche_report_view</field>
+        <field name="report_file">concesionario.coche_report</field>
+        <field name="binding_model_id" ref="model_concesionario_coche"/>
+        <field name="binding_type">report</field>
+
+    </record>
+
+    <template id="coche_report_view">
+        <t t-call="web.html_container">
+            <!-- muestra datos de la empresa (salta página) -->
+            <t t-call="web.external_layout">
+                <h1>Coche </h1><br />
+                <t t-foreach="docs" t-as="coche">
+                    <ul>
+                        <li>    matricula <span t-field="coche.matricula" /></li>
+                        <li>    marca <span t-field="coche.marca" /></li>
+                        <li>    modelo <span t-field="coche.modelo" /></li>
+                        <li>    color <span t-field="coche.color" /></li>
+                        <li>    fecha_fabricacion <span t-field="coche.fecha_fabricacion" /></li>
+                        <li>    anios <span t-field="coche.anios" /></li>
+                        <li>    precio <span t-field="coche.precio" /></li>
+                    </ul>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+
+
+
+
+    <record id="concesionario.cliente_report" model="ir.actions.report">
+        <field name="name">Informe de clientes</field>
+        <field name="model">concesionario.cliente</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">concesionario.cliente_report_view</field>
+        <field name="report_file">concesionario.cliente_report</field>
+        <field name="binding_model_id" ref="model_concesionario_cliente"/>
+        <field name="binding_type">report</field>
+
+    </record>
+
+    <template id="cliente_report_view">
+        <t t-call="web.html_container">
+            <!-- muestra datos de la empresa (salta página) -->
+            <t t-call="web.external_layout">
+                <h1>Clientes </h1><br />
+                <t t-foreach="docs" t-as="cliente">
+                    <ul>
+                        <li>    dni <span t-field="cliente.dni" /></li>
+                        <li>    nombre <span t-field="cliente.nombre" /></li>
+                        <li>    apellidos <span t-field="cliente.apellidos" /></li>
+                    </ul>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+
+
+
+
+
+    <record id="concesionario.vendedor_report" model="ir.actions.report">
+        <field name="name">Informe de vendedor</field>
+        <field name="model">concesionario.vendedor</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">concesionario.vendedor_report_view</field>
+        <field name="report_file">concesionario.vendedor_report</field>
+        <field name="binding_model_id" ref="model_concesionario_vendedor"/>
+        <field name="binding_type">report</field>
+
+    </record>
+
+    <template id="vendedor_report_view">
+        <t t-call="web.html_container">
+            <!-- muestra datos de la empresa (salta página) -->
+            <t t-call="web.external_layout">
+                <h1>Vendedor </h1><br />
+                <t t-foreach="docs" t-as="vendedor">
+                    <ul>
+                        <li>    dni <span t-field="vendedor.dni" /></li>
+                        <li>    nombre <span t-field="vendedor.nombre" /></li>
+                        <li>    apellidos <span t-field="vendedor.apellidos" /></li>
+                        <li>    cargo <span t-field="vendedor.cargo" /></li>
+                    </ul>
+                </t>
+            </t>
+        </t>
+    </template>
+
+
+
+
+
+
+    <record id="concesionario.ventas_report" model="ir.actions.report">
+        <field name="name">Informe de ventas</field>
+        <field name="model">concesionario.ventas</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">concesionario.ventas_report_view</field>
+        <field name="report_file">concesionario.ventas_report</field>
+        <field name="binding_model_id" ref="model_concesionario_ventas"/>
+        <field name="binding_type">report</field>
+
+    </record>
+
+    <template id="ventas_report_view">
+        <t t-call="web.html_container">
+            <!-- muestra datos de la empresa (salta página) -->
+            <t t-call="web.external_layout">
+                <h1>Ventas </h1><br />
+                <t t-foreach="docs" t-as="ventas">
+                    <ul>
+                        <li>    idVenta <span t-field="ventas.idVenta" /></li>
+                        <li>    fecha_venta <span t-field="ventas.fecha_venta" /></li>
+                        <li>    cochesVendidos_ids <span t-field="ventas.cochesVendidos_ids" /></li>
+                        <li>    vendedorVenta_ids <span t-field="ventas.vendedorVenta_ids" /></li>
+                        <li>    compradorVenta_id <span t-field="ventas.compradorVenta_id" /></li>
+                    </ul>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
